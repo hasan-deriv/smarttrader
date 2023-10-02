@@ -52,8 +52,34 @@ export default {
           xl: "4.8rem",
           xxl: "6.4rem",
         },
+        fontFamily: {
+          roboto: ["Roboto", "sans-serif"],
+          ibm: ["IBM Plex Sans", "sans-serif"],
+        },
+        screens: {
+          sm: "576px",
+          // => @media (min-width: 576px) { ... }
+
+          md: "768px",
+          // => @media (min-width: 768px) { ... }
+        },
       },
     },
-    plugins: [],
+    corePlugins: {
+      container: false,
+    },
+    plugins: [
+      function addComponentsFunc({ addComponents }) {
+        addComponents({
+            ".container": {
+                maxWidth: "960px",
+                marginInline: "auto",
+                paddingInline: "10px",
+                position: "relative",
+                zIndex: 10,
+            },
+        });
+      },
+    ],
 }
 
