@@ -13,10 +13,6 @@ export default {
           general: {
             "section-1": "#f2f3f4",
           },
-          text: {
-            prominent:" #333333",
-            "colored-barrier": "#008000"
-          },
           purchase: {
             "section-1": "#3d9494",
             "section-2": "#d33636",
@@ -31,6 +27,8 @@ export default {
             100: "#e6e9e9",
             200: "#d6d6d6"
           },
+          prominent:" #333333",
+          "colored-barrier": "#008000",
           active: "#d6dadb",
           danger: "#ec3f3f",
           success: "#4bb4b3",
@@ -43,6 +41,7 @@ export default {
           "gradient-danger": "linear-gradient(to top, #ffffff, rgba(255, 68, 79, 0.16))",
         },
         fontSize: {
+          base: "1rem",
           xxs: "1.2rem",
           xs: "1.4rem",
           s: "1.6rem",
@@ -55,6 +54,10 @@ export default {
         fontFamily: {
           roboto: ["Roboto", "sans-serif"],
           ibm: ["IBM Plex Sans", "sans-serif"],
+        },
+        lineHeight: {
+          body: 1.375,
+          base: 1
         },
         screens: {
           sm: "576px",
