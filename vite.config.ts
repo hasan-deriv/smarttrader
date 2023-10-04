@@ -8,6 +8,7 @@ const ALIASES = {
   Contexts: resolve(__dirname, "./src/contexts"),
   Hooks: resolve(__dirname, "./src/hooks"),
   Utils: resolve(__dirname, "./src/utils"),
+  Styles: resolve(__dirname, "./src/styles"),
 };
 
 // https://vitejs.dev/config/
