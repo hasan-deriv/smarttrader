@@ -1,4 +1,5 @@
 // Test for passing the github actions
+// TODO should update this test later
 import { describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Loading from "..";
