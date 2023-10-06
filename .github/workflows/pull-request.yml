@@ -1,0 +1,47 @@
+name: SmartTrader Test Workflow
+
+on: pull_request
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: Runner_16cores_Deriv-app
+    steps:
+      # checkout the repository content to github runner
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # setup nodejs environment
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      # cache the dependencies to speed up the build
+      - name: Cache dependencies
+        id: cache-npm
+        uses: actions/cache@v3
+        env: 
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      # install dependencies
+      - name: Install dependencies
+        run: npm i
+
+      # build the react app
+      - name: Build
+        run: npm run build
+
+      # run tests
+      - name: Run tests
+        run: npm run test
+
+      # deploy the react app to github pages
