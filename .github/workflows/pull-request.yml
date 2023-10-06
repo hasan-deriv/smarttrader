@@ -5,7 +5,7 @@ on: pull_request
 jobs:
   build_and_test:
     name: Build and Test
-    runs-on: Runner_16cores_Deriv-app
+    runs-on: ubuntu-latest
     steps:
       # checkout the repository content to github runner
       - name: Checkout
