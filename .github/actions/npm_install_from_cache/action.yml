@@ -1,4 +1,3 @@
-# cache the dependencies to speed up the build
 name: npm_install_from_cache
 description: Install npm packages from cache
 runs:
