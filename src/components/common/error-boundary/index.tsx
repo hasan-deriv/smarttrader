@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from 'react';
 
 /* 
 By default, if our application throws an error during rendering, React will remove its UI from the screen. 
@@ -7,49 +7,46 @@ An error boundary is a special component that lets us display some fallback UI i
 */
 
 type TErrorBoundaryProps = {
-  children?: ReactNode;
+    children?: ReactNode;
 };
 
 type TErrorBoundaryStates = {
-  has_error: boolean;
+    has_error: boolean;
 };
 
-class ErrorBoundary extends Component<
-  TErrorBoundaryProps,
-  TErrorBoundaryStates
-> {
-  constructor(props: TErrorBoundaryProps) {
-    super(props);
-    this.state = { has_error: false };
-  }
-
-  static getDerivedStateFromError(error: Error): TErrorBoundaryStates {
-    console.log("error: ", error);
-    /* Update state so the next render will show the fallback UI. */
-    return { has_error: true };
-  }
-
-  componentDidCatch(error: Error, info: ErrorInfo) {
-    // Example "componentStack":
-    //   in ComponentThatThrows (created by App)
-    //   in ErrorBoundary (created by App)
-    //   in div (created by App)
-    //   in App
-    console.log(error, info.componentStack);
-  }
-
-  render() {
-    const { has_error } = this.state;
-    const { children } = this.props;
-
-    if (has_error) {
-      // we can render any custom fallback UI
-      //   return fallback;
-      return <h1>Sorry.. there was an error</h1>;
+class ErrorBoundary extends Component<TErrorBoundaryProps, TErrorBoundaryStates> {
+    constructor(props: TErrorBoundaryProps) {
+        super(props);
+        this.state = { has_error: false };
     }
 
-    return children;
-  }
+    static getDerivedStateFromError(error: Error): TErrorBoundaryStates {
+        console.log('error: ', error);
+        /* Update state so the next render will show the fallback UI. */
+        return { has_error: true };
+    }
+
+    componentDidCatch(error: Error, info: ErrorInfo) {
+        // Example "componentStack":
+        //   in ComponentThatThrows (created by App)
+        //   in ErrorBoundary (created by App)
+        //   in div (created by App)
+        //   in App
+        console.log(error, info.componentStack);
+    }
+
+    render() {
+        const { has_error } = this.state;
+        const { children } = this.props;
+
+        if (has_error) {
+            // we can render any custom fallback UI
+            //   return fallback;
+            return <h1>Sorry.. there was an error</h1>;
+        }
+
+        return children;
+    }
 }
 
 export default ErrorBoundary;
