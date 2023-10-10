@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-ibm text-prominent leading-body text-base font-normal overflow-x-hidden;
+    }
+    p {
+        @apply mb-4;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6{
+        @apply font-ibm text-prominent leading-base font-bold;
+    }
+    h3,
+    .h3 {
+        @apply text-[1.375rem];
+    }
+}
