@@ -1,4 +1,4 @@
-name: DSmartTrader Production Workflow
+name: SmartTrader Production Workflow
 on:
   push:
     tags:

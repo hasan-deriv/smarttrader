@@ -1,4 +1,4 @@
-name: SmartTrader Test Workflow
+name: SmartTrader Staging Workflow
 
 on:
     push:
