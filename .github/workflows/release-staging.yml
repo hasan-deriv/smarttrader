@@ -1,0 +1,27 @@
+name: SmartTrader Test Workflow
+
+on:
+    push:
+      branches:
+      - master
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      # checkout the repository content to github runner
+      - name: Checkout
+        uses: actions/checkout@v4
+      # setup nodejs environment
+      - name: Setup Node.js environment
+        uses: ./.github/actions/setup_node
+      # cache the dependencies to speed up the build and then install dependencies
+      - name: Cache dependencies
+        uses: ./.github/actions/npm_install_from_cache
+      # build the react app
+      - name: Build
+        run: npm run build
+      # run tests
+      - name: Publish to Cloudflare Staging
+        uses: ./.github/actions/publish_to_cloudflare_staging
