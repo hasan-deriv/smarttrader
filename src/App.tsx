@@ -9,7 +9,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from 'Components/ui/modal';
+} from 'Components/ui/dialog';
 
 const App = () => (
     <AuthProvider>
