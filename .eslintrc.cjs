@@ -7,6 +7,7 @@ module.exports = {
     plugins: ['react-refresh'],
     rules: {
         'simple-import-sort/imports': 'off',
+        'import/no-extraneous-dependencies': 'off',
         'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
 };
