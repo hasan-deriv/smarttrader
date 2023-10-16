@@ -8,19 +8,16 @@ jobs:
         name: Build, Test and Publish to Production
         runs-on: ubuntu-latest
         steps:
-        # checkout the repository content to github runner
         - name: Checkout
           uses: actions/checkout@v4
-        # setup nodejs environment
         - name: Setup Node.js environment
           uses: ./.github/actions/setup_node
-        # install from the cache to speed up the build and if not then install dependencies
         - name: Cache dependencies
           uses: ./.github/actions/npm_install_from_cache
-        # build the react app
         - name: Build
           run: npm run build
-        # run tests
+        - name: Test
+          run: npm run test
         - name: Publish to Cloudflare Staging
           uses: ./.github/actions/publish_to_cloudflare_production
 
