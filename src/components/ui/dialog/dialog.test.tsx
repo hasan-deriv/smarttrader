@@ -76,4 +76,22 @@ describe('Dialog', () => {
         await userEvent.click(screen.getByText('Trigger'));
         expect(screen.getByText('Description')).toBeInTheDocument();
     });
+    it('should close the Dialog button on clicking close', async () => {
+        render(
+            <Dialog>
+                <DialogTrigger>Trigger</DialogTrigger>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Title</DialogTitle>
+                        <DialogDescription>Description</DialogDescription>
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
+        );
+        await userEvent.click(screen.getByText('Trigger'));
+        const close = screen.getByRole('button', { name: 'Close' });
+        expect(close).toBeInTheDocument();
+        await userEvent.click(close);
+        expect(screen.queryByText('Description')).not.toBeInTheDocument();
+    });
 });
