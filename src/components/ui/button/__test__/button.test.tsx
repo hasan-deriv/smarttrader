@@ -112,8 +112,8 @@ describe("Button component", () => {
 
     it("should render the correct tag when asChild prop is true", () => {
         render(
-            <Button>
-                <a>Link Button</a>
+            <Button asChild>
+                <a href="/">Link Button</a>
             </Button>
         );
         const btnElement = screen.getByRole("link");
