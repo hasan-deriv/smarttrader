@@ -5,7 +5,7 @@ on:
     - production_*
 jobs:
     build_test_and_publish:
-        name: Build and Test
+        name: Build, Test and Publish to Production
         runs-on: ubuntu-latest
         steps:
         # checkout the repository content to github runner
@@ -14,7 +14,7 @@ jobs:
         # setup nodejs environment
         - name: Setup Node.js environment
           uses: ./.github/actions/setup_node
-        # cache the dependencies to speed up the build and then install dependencies
+        # install from the cache to speed up the build and if not then install dependencies
         - name: Cache dependencies
           uses: ./.github/actions/npm_install_from_cache
         # build the react app
