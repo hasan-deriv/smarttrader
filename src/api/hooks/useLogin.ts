@@ -23,7 +23,6 @@ const useLogin = () => {
       Object.keys(client_account).length &&
       Object.keys(client_object).length
     ) {
-      console.log(client_object);
       localStorage.setItem("active_loginId", client_account["acct1"]);
       localStorage.setItem("client.accounts", JSON.stringify(client_object));
       if (search) deleteQueryParams();

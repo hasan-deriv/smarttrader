@@ -9,7 +9,6 @@ import { getActiveAuthToken } from 'Utils/storage';
 const useAuthorize = () => {
     const current_token = getActiveAuthToken();
     const invalidate = useInvalidateQuery();
-    console.log(current_token)
 
     const { data, ...rest } = useQuery('authorize', {
         payload: { authorize: current_token || '' },
