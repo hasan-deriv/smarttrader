@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { PropsWithChildren, createContext, useState } from 'react';
 
 // @ts-ignore

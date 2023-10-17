@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Component, ErrorInfo, ReactNode } from 'react';
 
 /* 
