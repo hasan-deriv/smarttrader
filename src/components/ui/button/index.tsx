@@ -4,7 +4,7 @@ import { type VariantProps } from 'class-variance-authority';
 import { cn } from 'Utils/cn';
 import { buttonVariants } from './variants';
 
-export interface ButtonProps
+interface ButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
         VariantProps<typeof buttonVariants> {
     asChild?: boolean;
