@@ -15,6 +15,10 @@ export default defineConfig({
   plugins: [react()],
   /* Absoloute path */
   resolve: { alias: ALIASES },
+  server: {
+    host: "localhost",
+    port: 42069
+  },
   /* vitest configs */
   test: {
     environment: "jsdom",

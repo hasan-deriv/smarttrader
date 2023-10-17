@@ -1,13 +1,16 @@
 import ErrorBoundary from "Components/common/error-boundary";
 import Layout from "Components/layout";
-import AuthProvider from "Contexts/authProvider";
+import useLogin from "./api/hooks/useLogin";
 
-const App = () => (
-  <AuthProvider>
+const App = () => {
+
+  const { is_logged_in } = useLogin();
+
+  return (
     <ErrorBoundary>
-      <Layout>App</Layout>
+      <Layout is_logged_in={is_logged_in}>App</Layout>
     </ErrorBoundary>
-  </AuthProvider>
-);
+  );
+};
 
 export default App;
