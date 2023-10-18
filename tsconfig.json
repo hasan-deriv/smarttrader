@@ -32,6 +32,6 @@
       "Styles/*": ["styles/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "stories/*.stories.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '../components/common/button';
+import { Button } from '../src/components/ui/button';
 
 const meta: Meta<typeof Button> = {
     component: Button,
@@ -17,5 +17,10 @@ type Story = StoryObj<typeof Button>;
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-    render: () => <Button />,
+    render: () => (
+        <Button color='secondary' variant='contained'>
+            {' '}
+            Click Me!{' '}
+        </Button>
+    ),
 };
