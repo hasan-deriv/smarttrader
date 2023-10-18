@@ -1,16 +1,6 @@
 import { AuthorizeResponse } from '@deriv/api-types';
 import { getActiveAuthTokenFromQueryParameters } from './url';
 
-export const setToStorage = <T>(key: string, data: T) => {
-    localStorage.setItem(key, JSON.stringify(data));
-    return true;
-};
-
-export const getFromStorage = <T>(key: string): T => {
-    const data = localStorage.getItem(key) || '';
-    return JSON.parse(data);
-};
-
 type TAccount = {
     token: string;
     accepted_bch: number;
@@ -52,8 +42,7 @@ export const getActiveAuthToken = () => {
     const accounts = getAccountsFromLocalStorage();
     const active_loginid = getActiveLoginIdFromLocalStorage();
     const token_from_query_params = getActiveAuthTokenFromQueryParameters();
-    // If there is no active loginid or no accounts list, return undefined.
-    // if (!active_loginid || !accounts) return;
+
     if (accounts?.[active_loginid ?? '']) return accounts?.[active_loginid ?? '']?.token;
     return token_from_query_params;
 };
