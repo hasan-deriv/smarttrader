@@ -671,7 +671,7 @@ export type TSocketPaginatateableRequestCleaned<T extends TSocketPaginateableEnd
 };
 
 export type TSocketRequestPayload<
-    T extends TSocketEndpointNames | TSocketPaginateableEndpointNames = TSocketEndpointNames
+    T extends TSocketEndpointNames | TSocketPaginateableEndpointNames = TSocketEndpointNames,
 > = Partial<TSocketRequestCleaned<T>> extends TSocketRequestCleaned<T>
     ? {
           payload?: T extends TSocketPaginateableEndpointNames
@@ -699,7 +699,7 @@ export type TSocketRequestMutationOptions<T extends TSocketEndpointNames> = Para
 type TSocketRequestWithOptions<
     T extends TSocketEndpointNames,
     O extends boolean = false,
-    OT extends 'useQuery' | 'useInfiniteQuery' = 'useQuery'
+    OT extends 'useQuery' | 'useInfiniteQuery' = 'useQuery',
 > = Omit<
     TSocketRequestPayload<T> & {
         options?: OT extends 'useQuery' ? TSocketRequestQueryOptions<T> : TSocketRequestInfiniteQueryOptions<T>;
@@ -714,13 +714,13 @@ type TNever<T> = T extends Record<string, never> ? never : T;
 type TSocketRequestProps<
     T extends TSocketEndpointNames,
     O extends boolean = false,
-    OT extends 'useQuery' | 'useInfiniteQuery' = 'useQuery'
+    OT extends 'useQuery' | 'useInfiniteQuery' = 'useQuery',
 > = TNever<TSocketRequestWithOptions<T, O, OT>>;
 
 export type TSocketAcceptableProps<
     T extends TSocketEndpointNames,
     O extends boolean = false,
-    OT extends 'useQuery' | 'useInfiniteQuery' = 'useQuery'
+    OT extends 'useQuery' | 'useInfiniteQuery' = 'useQuery',
 > = TSocketRequestProps<T, O, OT> extends never
     ? [undefined?]
     : Partial<TSocketRequestProps<T, O, OT>> extends TSocketRequestProps<T, O, OT>

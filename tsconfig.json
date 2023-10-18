@@ -33,6 +33,6 @@
     }
   },
   "include": ["src"],
-  "files": ["/src/types/utils.d.ts"],
+  "files": ["./src/types/utils.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
