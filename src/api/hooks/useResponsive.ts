@@ -1,5 +1,5 @@
 const useResponsive = () => {
-  return {};
+    return {};
 };
 
 export default useResponsive;

@@ -28,9 +28,11 @@
       "Constants/*": ["constants/*"],
       "Contexts/*": ["contexts/*"],
       "Hooks/*": ["hooks/*"],
-      "Utils/*": ["utils/*"]
+      "Utils/*": ["utils/*"],
+      "Styles/*": ["styles/*"]
     }
   },
   "include": ["src"],
+  "files": ["/src/types/utils.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

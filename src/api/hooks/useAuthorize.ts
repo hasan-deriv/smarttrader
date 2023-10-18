@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import useInvalidateQuery from './useInvalidateQuery';
 import useQuery from './useQuery';
-import { getActiveAuthToken } from 'Utils/storage';
+import { getActiveAuthToken } from '../../utils/storage';
 
 /** A custom hook that authorize the user with the given token. If no token is given,
  * it will use the current token from localStorage.

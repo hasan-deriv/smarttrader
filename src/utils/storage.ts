@@ -1,62 +1,59 @@
-import { AuthorizeResponse } from "@deriv/api-types";
-import { getActiveAuthTokenFromQueryParameters } from "./url";
+import { AuthorizeResponse } from '@deriv/api-types';
+import { getActiveAuthTokenFromQueryParameters } from './url';
 
 export const setToStorage = <T>(key: string, data: T) => {
-  localStorage.setItem(key, JSON.stringify(data));
-  return true;
+    localStorage.setItem(key, JSON.stringify(data));
+    return true;
 };
 
 export const getFromStorage = <T>(key: string): T => {
-  const data = localStorage.getItem(key) || "";
-  return JSON.parse(data);
+    const data = localStorage.getItem(key) || '';
+    return JSON.parse(data);
 };
 
 type TAccount = {
-  token: string;
-  accepted_bch: number;
-  landing_company_shortcode: string;
-  residence: string;
-  session_start: number;
+    token: string;
+    accepted_bch: number;
+    landing_company_shortcode: string;
+    residence: string;
+    session_start: number;
 };
 
 type TAccountsList = {
-  [k: string]: TAccount &
-    NonNullable<
-      NonNullable<NonNullable<AuthorizeResponse["authorize"]>["account_list"]>
-    >[number];
+    [k: string]: TAccount &
+        NonNullable<NonNullable<NonNullable<AuthorizeResponse['authorize']>['account_list']>>[number];
 };
 
 /**
  * Gets the current user `accounts` list from the `localStorage`.
  */
 export const getAccountsFromLocalStorage = () => {
-  const data = localStorage.getItem("client.accounts");
+    const data = localStorage.getItem('client.accounts');
 
-  // If there is no accounts list, return undefined.
-  if (!data) return;
-  // Cast parsed JSON data to infer return type
-  return JSON.parse(data) as TAccountsList;
+    // If there is no accounts list, return undefined.
+    if (!data) return;
+    // Cast parsed JSON data to infer return type
+    return JSON.parse(data) as TAccountsList;
 };
 
 /**
  * Gets the active `loginid` for the current user from the `localStorage`.
  */
 export const getActiveLoginIdFromLocalStorage = () => {
-  const active_loginid = localStorage.getItem("active_loginId");
+    const active_loginid = localStorage.getItem('active_loginId');
 
-  // If there is no active loginid, return undefined.
-  if (!active_loginid) return;
+    // If there is no active loginid, return undefined.
+    if (!active_loginid) return;
 
-  return active_loginid;
+    return active_loginid;
 };
 
 export const getActiveAuthToken = () => {
-  const accounts = getAccountsFromLocalStorage();
-  const active_loginid = getActiveLoginIdFromLocalStorage();
-  const token_from_query_params = getActiveAuthTokenFromQueryParameters();
-  // If there is no active loginid or no accounts list, return undefined.
-  // if (!active_loginid || !accounts) return;
-  if (accounts?.[active_loginid ?? ''])
-    return accounts?.[active_loginid ?? '']?.token;
-  return token_from_query_params;
+    const accounts = getAccountsFromLocalStorage();
+    const active_loginid = getActiveLoginIdFromLocalStorage();
+    const token_from_query_params = getActiveAuthTokenFromQueryParameters();
+    // If there is no active loginid or no accounts list, return undefined.
+    // if (!active_loginid || !accounts) return;
+    if (accounts?.[active_loginid ?? '']) return accounts?.[active_loginid ?? '']?.token;
+    return token_from_query_params;
 };

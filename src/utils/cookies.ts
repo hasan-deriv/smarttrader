@@ -1,7 +1,7 @@
-export const getCookiesObject = (cookies) => {};
+export const getCookiesObject = () => {};
 
-export const getDataObjFromCookies = (cookies, fields) => {};
+export const getDataObjFromCookies = () => {};
 
-export const getDataLink = (data) => {};
+export const getDataLink = () => {};
 
 export const getCookiesFields = () => [];
