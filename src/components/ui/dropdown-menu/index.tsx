@@ -2,11 +2,9 @@ import { forwardRef, ElementRef, ComponentPropsWithoutRef } from 'react';
 import {
     Root,
     Trigger,
-    Group,
     Portal,
     Sub,
     SubTrigger,
-    RadioGroup,
     SubContent,
     Content,
     Item,
@@ -16,10 +14,8 @@ import {
 
 const DropdownMenu = Root;
 const DropdownMenuTrigger = Trigger;
-const DropdownMenuGroup = Group;
 const DropdownMenuPortal = Portal;
 const DropdownMenuSub = Sub;
-const DropdownMenuRadioGroup = RadioGroup;
 
 const DropdownMenuSubTrigger = forwardRef<ElementRef<typeof SubTrigger>, ComponentPropsWithoutRef<typeof SubTrigger>>(
     ({ children, ...props }, ref) => (
@@ -66,10 +62,8 @@ export {
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
-    DropdownMenuGroup,
     DropdownMenuPortal,
     DropdownMenuSub,
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
-    DropdownMenuRadioGroup,
 };
