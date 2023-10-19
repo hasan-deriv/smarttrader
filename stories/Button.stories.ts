@@ -31,6 +31,6 @@ export const Primary: Story = {
         children: 'test',
         variant: 'contained',
         fullwidth: true,
-        className: 'p-2 text-center',
+        className: 'p-2 rounded-md text-center justify-center',
     },
 };
