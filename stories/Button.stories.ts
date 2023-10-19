@@ -18,14 +18,18 @@ const meta = {
             options: ['contained', 'outlined'],
             control: { type: 'radio' },
         },
+        asChild: {
+            options: [true, false],
+            control: { type: 'radio' },
+        },
     },
 } satisfies Meta<typeof Button>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type TButtonStory = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary: Story = {
+export const Primary: TButtonStory = {
     args: {
         color: 'primary',
         children: 'test',
@@ -33,5 +37,6 @@ export const Primary: Story = {
         fullwidth: true,
         size: 'default',
         className: 'inline-flex',
+        asChild: false,
     },
 };
