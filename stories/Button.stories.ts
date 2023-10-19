@@ -16,7 +16,7 @@ const meta = {
         },
         variant: {
             options: ['contained', 'outlined'],
-            control: { type: 'select' },
+            control: { type: 'radio' },
         },
     },
 } satisfies Meta<typeof Button>;
@@ -31,6 +31,7 @@ export const Primary: Story = {
         children: 'test',
         variant: 'contained',
         fullwidth: true,
-        className: 'p-2 rounded-md text-center justify-center',
+        size: 'default',
+        className: 'inline-flex',
     },
 };
