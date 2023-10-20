@@ -9,12 +9,13 @@ const ALIASES = {
     Hooks: resolve(__dirname, './src/hooks'),
     Utils: resolve(__dirname, './src/utils'),
     Styles: resolve(__dirname, './src/styles'),
+    Translations: resolve(__dirname, './src/translations'),
 };
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    /* Absoloute path */
+    /* Absolute path */
     resolve: { alias: ALIASES },
     /* vitest configs */
     test: {

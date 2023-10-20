@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { DEFAULT_LANGUAGE, LANGUAGE_KEY } from '../constants/translations';
+import { DEFAULT_LANGUAGE, LANGUAGE_KEY } from 'Constants/translations';
 
 export const getInitialLanguage = () => localStorage.getItem(LANGUAGE_KEY) || DEFAULT_LANGUAGE;
 
