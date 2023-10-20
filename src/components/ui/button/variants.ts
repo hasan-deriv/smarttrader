@@ -34,6 +34,11 @@ export const buttonVariants = cva(
                 className: 'bg-secondary',
             },
             {
+                variant: 'contained',
+                color: 'success',
+                className: 'bg-success',
+            },
+            {
                 variant: 'outlined',
                 color: 'primary',
                 className: 'hover:bg-primary-hover focus:bg-primary-hover',
