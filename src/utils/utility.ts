@@ -1,4 +1,4 @@
-import useAuthorize from '../api/hooks/useAuthorize';
+import useAuthorize from 'Api/hooks/useAuthorize';
 import { getCurrentDomain } from './websocket/config';
 
 type TObjParams<T extends number> = {

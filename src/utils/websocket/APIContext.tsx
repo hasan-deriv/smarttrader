@@ -1,8 +1,7 @@
 import { createContext } from 'react';
+// @ts-expect-error `@deriv/deriv-api` is not in TypeScript, Hence we ignore the TS error.
+import DerivAPIBasic from '@deriv/deriv-api/dist/DerivAPIBasic';
 
-// Don't need to type `deriv_api` here, We will be using these methods inside
-// the `useQuery`, `useMutation` and `useSubscription` hook to make it type-safe.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const APIContext = createContext<Record<string, any> | null>(null);
+const APIContext = createContext<Record<string, DerivAPIBasic> | null>(null);
 
 export default APIContext;

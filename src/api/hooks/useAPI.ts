@@ -6,7 +6,7 @@ import type {
     TSocketRequestPayload,
     TSocketResponseData,
     TSocketSubscribableEndpointNames,
-} from 'api/types';
+} from 'Api/types';
 
 import APIContext from 'Utils/websocket/APIContext';
 
@@ -35,12 +35,8 @@ const useAPI = () => {
             payload?: TSocketRequestPayload<T>
         ): {
             subscribe: (
-                // The type will be handled by the `useSubscription` hook.
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onData: (response: any) => void,
-                // The type will be handled by the `useSubscription` hook.
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onError: (response: any) => void
+                onData: (response: Promise<TSocketResponseData<T>>) => void,
+                onError: (response: Promise<TSocketResponseData<T>>) => void
             ) => { unsubscribe?: VoidFunction };
         } => api?.subscribe({ [name]: 1, subscribe: 1, ...(payload || {}) }),
         [api]

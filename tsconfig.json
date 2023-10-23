@@ -21,17 +21,17 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
 
-    /* Absoloute path */
+    /* Absolute path */
     "baseUrl": "./src/",
     "paths": {
+      "Api/*": ["api/*"],
       "Components/*": ["components/*"],
       "Constants/*": ["constants/*"],
       "Contexts/*": ["contexts/*"],
-      "Hooks/*": ["hooks/*"],
-      "Utils/*": ["utils/*"],
       "Styles/*": ["styles/*"],
       "Translations/*": ["translations/*"],
-      "Types/*": ["types/*"]
+      "Types/*": ["types/*"],
+      "Utils/*": ["utils/*"],
     }
   },
   "include": ["src", "stories/*.stories.tsx", "stories"],

@@ -5,6 +5,7 @@ import { getAppId, getSocketURL } from './config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import APIContext from './APIContext';
+import { DEFAULT_LANGUAGE } from 'Constants/translations';
 
 declare global {
     interface Window {
@@ -27,7 +28,7 @@ const getSharedQueryClientContext = (): QueryClient => {
 // Later once we have each package separated we won't need this anymore and can remove this.
 const getDerivAPIInstance = (): DerivAPIBasic => {
     const endpoint = getSocketURL();
-    const language = 'EN'; // Need to use the language from the app context.
+    const language = DEFAULT_LANGUAGE; // Need to use the language from the app context.
     const brand = 'deriv';
     const wss = `wss://${endpoint}/websockets/v3?app_id=${getAppId()}&l=${language}&brand=${brand}`;
 
