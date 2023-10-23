@@ -34,7 +34,7 @@
       "Types/*": ["types/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "stories/*.stories.tsx", "stories"],
   "files": ["./src/types/utils.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
