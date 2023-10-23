@@ -1,9 +1,10 @@
+import { DEFAULT_LANGUAGE } from 'Constants/translations';
 import { getTopLevelDomain } from './utility';
 import { getAppId } from './websocket/config';
 
 export const loginUrl = () => {
     const server_url = localStorage.getItem('config.server_url');
-    const language = 'en';
+    const language = DEFAULT_LANGUAGE;
     const signup_device = localStorage.getItem('signup_device');
     const date_first_contact = localStorage.getItem('date_first_contact');
     const marketing_queries = `&signup_device=${signup_device}${
