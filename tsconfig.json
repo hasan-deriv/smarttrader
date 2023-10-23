@@ -33,6 +33,6 @@
             "Translations/*": ["translations/*"]
         }
     },
-    "include": ["src"],
+    "include": ["src", "stories/*.stories.tsx", "stories"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
