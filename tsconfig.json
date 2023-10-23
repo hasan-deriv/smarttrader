@@ -29,7 +29,8 @@
       "Contexts/*": ["contexts/*"],
       "Hooks/*": ["hooks/*"],
       "Utils/*": ["utils/*"],
-      "Styles/*": ["styles/*"]
+      "Styles/*": ["styles/*"],
+      "Types/*": ["types/*"]
     }
   },
   "include": ["src"],

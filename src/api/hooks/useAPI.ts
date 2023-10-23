@@ -6,7 +6,7 @@ import type {
     TSocketRequestPayload,
     TSocketResponseData,
     TSocketSubscribableEndpointNames,
-} from '../types';
+} from 'api/types';
 
 import APIContext from 'Utils/websocket/APIContext';
 

@@ -1,6 +1,6 @@
-import { deleteQueryParams, readLoginQueryParams } from '../../utils/url';
+import { deleteQueryParams, readLoginQueryParams } from 'Utils/url';
 import useAuthorize from './useAuthorize';
-import { storeClientAccounts } from '../../utils/utility';
+import { storeClientAccounts } from 'Utils/utility';
 import { useEffect, useMemo } from 'react';
 
 const useLogin = () => {
@@ -19,7 +19,7 @@ const useLogin = () => {
     }, [account_list.account_list, client_account]);
 
     useEffect(() => {
-        if (Object.keys(client_account).length && Object.keys(client_object).length) {
+        if (Object.keys(client_account).length && Object.keys(client_object ?? '').length) {
             localStorage.setItem('active_loginId', client_account.acct1);
             localStorage.setItem('client.accounts', JSON.stringify(client_object));
             if (search) deleteQueryParams();
