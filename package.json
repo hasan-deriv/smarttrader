@@ -11,9 +11,9 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
@@ -23,10 +23,12 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lint-staged": "^15.0.1",
+    "i18next": "^23.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "react-i18next": "^13.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.8.0",
