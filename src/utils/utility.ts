@@ -19,38 +19,12 @@ export const storeClientAccounts = (
     obj_params: TObjParams<number>,
     account_list: ReturnType<typeof useAuthorize>['data']['account_list']
 ) => {
-    const map_names: { [key: string]: string } = {
-        country: 'residence',
-        landing_company_name: 'landing_company_shortcode',
-    };
     const client_object = {} as TClientObject;
     let active_loginid = '';
 
     account_list?.forEach(account => {
-        Object.keys(account).forEach(param => {
-            if (param === 'loginid') {
-                if (!active_loginid && !account.is_disabled) {
-                    if (!account.is_virtual) {
-                        active_loginid = account[param] ?? '';
-                    } else if (account.is_virtual) {
-                        // TODO: [only_virtual] remove this to stop logging non-SVG clients into virtual
-                        active_loginid = account[param] ?? '';
-                    }
-                }
-            } else {
-                const param_to_set: keyof TModifiedAccountsList | keyof typeof map_names = map_names[param] || param;
-                const value_to_set =
-                    typeof account[param as keyof typeof account] === 'undefined'
-                        ? ''
-                        : account[param as keyof typeof account];
-                if (!(account.loginid && account.loginid in client_object)) {
-                    client_object[account.loginid ?? ''] = {};
-                }
-                if (account.loginid && client_object[account.loginid]) {
-                    client_object[account.loginid][param_to_set] = value_to_set;
-                }
-            }
-        });
+        if (!account.loginid) return;
+        client_object[account.loginid!] = account;
     });
 
     let i = 1;
@@ -69,12 +43,6 @@ export const storeClientAccounts = (
         active_loginid = obj_params.acct1;
     }
     return client_object;
-    // // TODO: send login flag to GTM if needed
-    // if (active_loginid && Object.keys(client_object).length) {
-    //     localStorage.setItem('active_loginid', active_loginid);
-    //     localStorage.setItem('client.accounts', JSON.stringify(client_object));
-    //     this.syncWithLegacyPlatforms(active_loginid, this.accounts);
-    // }
 };
 
 export const getTopLevelDomain = () => {

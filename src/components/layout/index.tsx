@@ -7,7 +7,9 @@ const Layout = ({ children }: PropsWithChildren) => (
     <Fragment>
         <Header />
         {children}
-        <LoginLogoutButton />
+        <div>
+            <LoginLogoutButton />
+        </div>
         <Footer />
     </Fragment>
 );
