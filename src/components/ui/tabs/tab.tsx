@@ -22,9 +22,17 @@ interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, Varian
     isActive?: boolean;
 }
 
-export const Tab = ({ children, onClick, isActive, className, variant, size }: TabProps) => {
+export const Tab = ({ children, id, onClick, isActive, className, variant, size }: TabProps) => {
     return (
-        <button onClick={onClick} className={cn(tabVariants({ variant, size, isActive }), className)}>
+        <button
+            type='button'
+            onClick={onClick}
+            className={cn(tabVariants({ variant, size, isActive }), className)}
+            role='tab'
+            id={`${id}-tab`}
+            aria-selected={!!isActive}
+            aria-controls={`${id}-panel`}
+        >
             {children}
         </button>
     );

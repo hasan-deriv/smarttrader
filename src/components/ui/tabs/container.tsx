@@ -2,6 +2,7 @@ import { Children, ComponentProps, FunctionComponent, ReactNode, cloneElement, i
 import { cn } from 'Utils/cn';
 
 type TProps = ComponentProps<'div'> & {
+    id: string;
     variant?: 'basic' | 'standard';
     size?: 'lg' | 'sm';
     indicatorColor?: 'primary';
@@ -9,6 +10,7 @@ type TProps = ComponentProps<'div'> & {
 
 export const TabContainer = ({
     children,
+    id,
     className,
     variant = 'standard',
     indicatorColor = 'primary',
@@ -28,8 +30,15 @@ export const TabContainer = ({
                     ...child.props,
                     isActive: value === idx,
                     onClick: () => handleClick(idx),
+                    id: `${id}-${idx}`,
                     variant,
                     size,
+                });
+            }
+            if (parent === 'TabContent') {
+                return cloneElement(child, {
+                    ...child.props,
+                    id: `${id}-${idx}`,
                 });
             }
         });
@@ -52,10 +61,15 @@ export const TabContainer = ({
         if (name === 'TabContent') {
             return cloneElement(child, {
                 ...child.props,
+                children: iterateOverChildren(child.props.children, name),
                 activeIdx: value,
             });
         }
     });
 
-    return <div className={cn('tab-container', className)}>{renderChildren}</div>;
+    return (
+        <div className={cn('tab-container', className)} id='id'>
+            {renderChildren}
+        </div>
+    );
 };

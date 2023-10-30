@@ -40,7 +40,12 @@ export const TabList = ({ children, activeIdx = 0, variant, size, indicatorColor
     }, [activeIdx]);
 
     return (
-        <div className={cn('relative flex', className, tabListVariants({ variant }))} ref={ref}>
+        <div
+            className={cn('relative flex', className, tabListVariants({ variant }))}
+            ref={ref}
+            role='tablist'
+            aria-orientation='horizontal'
+        >
             {children}
             {variant === 'standard' && (
                 <div
