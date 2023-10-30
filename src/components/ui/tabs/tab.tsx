@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react';
+import { ReactNode } from 'react';
 
 type TabProps = {
     onClick?: () => void;
@@ -6,14 +6,12 @@ type TabProps = {
     children: ReactNode;
 };
 
-export const Tab = forwardRef<ElementRef<'button'>, ComponentPropsWithoutRef<'button'> & TabProps>(
-    ({ children, onClick, isActive }: TabProps, ref) => {
-        return (
-            <button onClick={onClick} className={isActive ? 'selected' : ''} ref={ref}>
-                {children}
-                {isActive ? <div className='underline' /> : null}
-            </button>
-        );
-    }
-);
+export const Tab = ({ children, onClick, isActive }: TabProps) => {
+    return (
+        <button onClick={onClick} className={isActive ? 'selected' : ''}>
+            {children}
+        </button>
+    );
+};
+
 Tab.displayName = 'Tab';
