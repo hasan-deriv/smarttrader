@@ -68,7 +68,7 @@ export const TabContainer = ({
     });
 
     return (
-        <div className={cn('tab-container', className)} id='id'>
+        <div className={cn('tab-container', className)} id={id}>
             {renderChildren}
         </div>
     );
