@@ -1,26 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from 'Components/ui/tabs';
+import { Tab, TabContainer, TabContent, TabList, TabPane } from 'Components/ui/tabs';
 
 const meta = {
     title: 'Tabs',
-    component: Tabs,
-} satisfies Meta<typeof Tabs>;
+    component: TabContainer,
+    render: ({ ...args }) => (
+        <TabContainer {...args}>
+            <TabList>
+                <Tab>Home</Tab>
+                <Tab>Profile</Tab>
+                <Tab>Contact</Tab>
+            </TabList>
+            <TabContent>
+                <TabPane>Home Tab</TabPane>
+                <TabPane>Profile Tab</TabPane>
+                <TabPane>Contact Tab</TabPane>
+            </TabContent>
+        </TabContainer>
+    ),
+} satisfies Meta<typeof TabContainer>;
 
 export default meta;
 type TTabsStory = StoryObj<typeof meta>;
 
-const TabsExample = () => (
-    <Tabs defaultValue='account' className='w-[400px]'>
-        <TabsList>
-            <TabsTrigger value='account'>Account</TabsTrigger>
-            <TabsTrigger value='password'>Password</TabsTrigger>
-        </TabsList>
-        <TabsContent value='account'>Make changes to your account here.</TabsContent>
-        <TabsContent value='password'>Change your password here.</TabsContent>
-    </Tabs>
-);
-
 export const Primary: TTabsStory = {
-    render: () => <TabsExample />,
+    args: {
+        children: '',
+    },
 };
