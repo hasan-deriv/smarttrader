@@ -1,11 +1,28 @@
 import { useEffect, useRef, useState } from 'react';
+import { type VariantProps, cva } from 'class-variance-authority';
+import { cn } from 'Utils/cn';
 
-type TProps = {
-    children: React.ReactNode;
+const tabListVariants = cva('', {
+    variants: {
+        variant: {
+            basic: '',
+            standard: 'border-b border-b-general-section-1',
+        },
+        size: {
+            lg: 'h-[3px] bottom-[-1.5px]',
+            sm: 'h-[1px] bottom-[-0.5px]',
+        },
+        indicatorColor: {
+            primary: 'bg-primary',
+        },
+    },
+});
+
+interface TabProps extends React.ButtonHTMLAttributes<HTMLElement>, VariantProps<typeof tabListVariants> {
     activeIdx?: number;
-};
+}
 
-export const TabList = ({ children, activeIdx = 0 }: TProps) => {
+export const TabList = ({ children, activeIdx = 0, variant, size, indicatorColor, className }: TabProps) => {
     const [width, setWidth] = useState(0);
     const [left, setLeft] = useState(0);
     const ref = useRef<HTMLDivElement>(null);
@@ -23,12 +40,17 @@ export const TabList = ({ children, activeIdx = 0 }: TProps) => {
     }, [activeIdx]);
 
     return (
-        <div className='relative flex' ref={ref}>
+        <div className={cn('relative flex', className, tabListVariants({ variant }))} ref={ref}>
             {children}
-            <div
-                className='indicator absolute bottom-0 my-auto h-1 bg-red-700 ease-in-out [transition:left_0.4s,width_0.2s_0.1s]'
-                style={{ width: `${width}px`, left: `${left}px` }}
-            />
+            {variant === 'standard' && (
+                <div
+                    className={cn(
+                        tabListVariants({ size, indicatorColor }),
+                        'absolute my-auto rounded ease-in-out [transition:left_0.4s,width_0.2s_0.1s]'
+                    )}
+                    style={{ width: `${width}px`, left: `${left}px` }}
+                />
+            )}
         </div>
     );
 };

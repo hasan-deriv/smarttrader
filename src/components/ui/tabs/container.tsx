@@ -1,10 +1,19 @@
-import { Children, FunctionComponent, ReactNode, cloneElement, isValidElement, useState } from 'react';
+import { Children, ComponentProps, FunctionComponent, ReactNode, cloneElement, isValidElement, useState } from 'react';
+import { cn } from 'Utils/cn';
 
-type TProps = {
-    children: React.ReactNode;
+type TProps = ComponentProps<'div'> & {
+    variant?: 'basic' | 'standard';
+    size?: 'lg' | 'sm';
+    indicatorColor?: 'primary';
 };
 
-export const TabContainer = ({ children }: TProps) => {
+export const TabContainer = ({
+    children,
+    className,
+    variant = 'standard',
+    indicatorColor = 'primary',
+    size = 'sm',
+}: TProps) => {
     const [value, setValue] = useState(0);
 
     const handleClick = (idx: number) => {
@@ -17,8 +26,10 @@ export const TabContainer = ({ children }: TProps) => {
             if (parent === 'TabList') {
                 return cloneElement(child, {
                     ...child.props,
-                    activeIdx: value,
+                    isActive: value === idx,
                     onClick: () => handleClick(idx),
+                    variant,
+                    size,
                 });
             }
         });
@@ -33,6 +44,9 @@ export const TabContainer = ({ children }: TProps) => {
                 ...child.props,
                 children: iterateOverChildren(child.props.children, name),
                 activeIdx: value,
+                variant,
+                indicatorColor,
+                size,
             });
         }
         if (name === 'TabContent') {
@@ -43,5 +57,5 @@ export const TabContainer = ({ children }: TProps) => {
         }
     });
 
-    return <div className='tab-container'>{renderChildren}</div>;
+    return <div className={cn('tab-container', className)}>{renderChildren}</div>;
 };

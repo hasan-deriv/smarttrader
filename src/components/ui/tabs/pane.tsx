@@ -1,21 +1,10 @@
-import { ReactNode } from 'react';
+import { ComponentProps } from 'react';
+import { cn } from 'Utils/cn';
 
-type PaneProps = {
-    isActive?: boolean;
-    children: ReactNode;
-};
+type PaneProps = ComponentProps<'div'>;
 
-export const TabPane = ({ children, isActive }: PaneProps) => {
-    return (
-        <div
-            style={{
-                background: isActive ? 'red' : 'transparent',
-                marginTop: '30px',
-            }}
-        >
-            {children}
-        </div>
-    );
+export const TabPane = ({ children, className }: PaneProps) => {
+    return <div className={cn(className)}>{children}</div>;
 };
 
 TabPane.displayName = 'TabPane';
