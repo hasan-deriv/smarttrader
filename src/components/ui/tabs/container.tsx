@@ -12,7 +12,7 @@ export const TabContainer = ({
     className,
     variant = 'standard',
     indicatorColor = 'primary',
-    size = 'sm',
+    size = 'lg',
 }: TProps) => {
     const [value, setValue] = useState(0);
 

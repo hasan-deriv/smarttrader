@@ -12,13 +12,28 @@ const meta = {
                 <Tab>Profile</Tab>
                 <Tab>Contact</Tab>
             </TabList>
-            <TabContent>
+            <TabContent className='p-1.5'>
                 <TabPane>Home Tab</TabPane>
                 <TabPane>Profile Tab</TabPane>
                 <TabPane>Contact Tab</TabPane>
             </TabContent>
         </TabContainer>
     ),
+    tags: ['autodocs'],
+    argTypes: {
+        variant: {
+            options: ['basic', 'standard'],
+            control: 'select',
+        },
+        indicatorColor: {
+            options: ['primary'],
+            control: 'select',
+        },
+        size: {
+            options: ['lg', 'sm'],
+            control: 'select',
+        },
+    },
 } satisfies Meta<typeof TabContainer>;
 
 export default meta;
@@ -26,6 +41,8 @@ type TTabsStory = StoryObj<typeof meta>;
 
 export const Primary: TTabsStory = {
     args: {
-        children: '',
+        variant: 'standard',
+        indicatorColor: 'primary',
+        size: 'lg',
     },
 };
