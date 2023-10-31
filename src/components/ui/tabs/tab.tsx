@@ -5,7 +5,7 @@ const tabVariants = cva('', {
     variants: {
         variant: {
             basic: '',
-            standard: 'flex-auto',
+            underlined: 'flex-auto',
         },
         size: {
             lg: 'text-[1.3225rem] px-5 py-1.5',

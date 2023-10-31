@@ -6,7 +6,7 @@ const tabListVariants = cva('', {
     variants: {
         variant: {
             basic: '',
-            standard: 'border-b border-b-general-section-1',
+            underlined: 'border-b border-b-general-section-1',
         },
         size: {
             lg: 'h-[3px] bottom-[-1.5px]',
@@ -29,10 +29,7 @@ export const TabList = ({ children, activeIdx = 0, variant, size, indicatorColor
 
     useEffect(() => {
         if (ref.current) {
-            const childArr = [...ref.current.children];
-            const buttons = childArr.filter(child => {
-                if (child.nodeName === 'BUTTON') return child;
-            });
+            const buttons = [...ref.current.children].filter(child => child.nodeName === 'BUTTON' && child);
             const activeChild = buttons[activeIdx] as HTMLElement;
             setWidth(activeChild.clientWidth);
             setLeft(activeChild.offsetLeft);
@@ -47,7 +44,7 @@ export const TabList = ({ children, activeIdx = 0, variant, size, indicatorColor
             aria-orientation='horizontal'
         >
             {children}
-            {variant === 'standard' && (
+            {variant === 'underlined' && (
                 <div
                     className={cn(
                         tabListVariants({ size, indicatorColor }),

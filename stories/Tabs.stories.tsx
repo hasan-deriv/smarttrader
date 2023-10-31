@@ -22,7 +22,7 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {
         variant: {
-            options: ['basic', 'standard'],
+            options: ['basic', 'underlined'],
             control: 'select',
         },
         indicatorColor: {
@@ -42,7 +42,7 @@ type TTabsStory = StoryObj<typeof meta>;
 export const Primary: TTabsStory = {
     args: {
         id: 'example-tab',
-        variant: 'standard',
+        variant: 'underlined',
         indicatorColor: 'primary',
         size: 'lg',
     },

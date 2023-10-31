@@ -3,7 +3,7 @@ import { cn } from 'Utils/cn';
 
 type TProps = ComponentProps<'div'> & {
     id: string;
-    variant?: 'basic' | 'standard';
+    variant?: 'basic' | 'underlined';
     size?: 'lg' | 'sm';
     indicatorColor?: 'primary';
 };
@@ -12,7 +12,7 @@ export const TabContainer = ({
     children,
     id,
     className,
-    variant = 'standard',
+    variant = 'underlined',
     indicatorColor = 'primary',
     size = 'lg',
 }: TProps) => {
