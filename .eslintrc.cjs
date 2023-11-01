@@ -8,7 +8,7 @@ module.exports = {
     rules: {
         'simple-import-sort/imports': 'off',
         'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
-        'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+        'react-refresh/only-export-components': ['off', { allowConstantExport: true }],
     },
     settings: {
           react: {
